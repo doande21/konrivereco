@@ -117,7 +117,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
       onSetAdminLoggedIn(true);
       showNotification('Đăng nhập quản trị viên thành công!');
     } else {
-      setAuthError('Mật khẩu không đúng. Vui lòng nhập ít nhất 6 ký tự (Ví dụ: admin123).');
+      setAuthError('Mật khẩu không đúng. Vui lòng nhập ít nhất 6 ký tự.S');
     }
   };
 
