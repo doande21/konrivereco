@@ -61,9 +61,9 @@ export const PageJourney: React.FC<PageJourneyProps> = ({ onNavigate }) => {
           <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold block">
             PROJECT JOURNEY
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight leading-tight">
-            Từng bước hình thành một điểm đến mới
-          </h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+  Từng bước hình thành một điểm đến mới
+</h1>
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
             Mỗi công trình đều bắt đầu từ một ý tưởng. Với Kon River Eco Retreat, ý tưởng ấy là xây dựng một không gian nghỉ dưỡng sinh thái có sự kết nối với thiên nhiên và bản sắc văn hóa Vĩnh Thạnh.
           </p>
@@ -81,9 +81,9 @@ export const PageJourney: React.FC<PageJourneyProps> = ({ onNavigate }) => {
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               LỘ TRÌNH DỰ KIẾN
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
-              Các cột mốc phát triển dự án
-            </h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+  Các cột mốc phát triển dự án
+</h2>
           </div>
 
           {/* Timeline Table / Cards */}
@@ -104,7 +104,7 @@ export const PageJourney: React.FC<PageJourneyProps> = ({ onNavigate }) => {
                     </span>
                   </div>
                   <div className="col-span-4 mb-2 md:mb-0">
-                    <h3 className="text-base font-bold text-stone-900 font-serif">
+                    <h3 className="text-base font-bold text-stone-900 ">
                       {m.title}
                     </h3>
                   </div>
@@ -135,7 +135,7 @@ export const PageJourney: React.FC<PageJourneyProps> = ({ onNavigate }) => {
               <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
                 THÔNG CÁO CHÍNH THỨC
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
+              <h2 className="text-2xl sm:text-3xl font-bold  text-stone-900">
                 Thông tin mới nhất từ Kon River
               </h2>
               <p className="text-stone-600 text-sm leading-relaxed">
@@ -183,7 +183,7 @@ export const PageJourney: React.FC<PageJourneyProps> = ({ onNavigate }) => {
                           </span>
                         )}
                       </div>
-                      <h3 className="text-lg font-bold font-serif text-stone-900 leading-snug">
+                      <h3 className="text-lg font-bold  text-stone-900 leading-snug">
                         {item.title}
                       </h3>
                       <p className="text-xs text-stone-600 leading-relaxed">
@@ -213,7 +213,7 @@ export const PageJourney: React.FC<PageJourneyProps> = ({ onNavigate }) => {
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               HỎI ĐÁP MINH BẠCH
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
+            <h2 className="text-2xl sm:text-3xl font-bold  text-stone-900">
               Câu hỏi thường gặp (FAQ)
             </h2>
             <p className="text-stone-600 text-sm">
@@ -230,7 +230,7 @@ export const PageJourney: React.FC<PageJourneyProps> = ({ onNavigate }) => {
                     onClick={() => toggleFaq(index)}
                     className="w-full flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none"
                   >
-                    <span className="text-base font-semibold text-stone-900 font-serif">
+                    <span className="text-base font-semibold text-stone-900 ">
                       {faq.q}
                     </span>
                     <span className="p-1 rounded-md text-stone-500 hover:text-stone-900 shrink-0">

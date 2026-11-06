@@ -1,10 +1,20 @@
-import { db, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, orderBy } from '../lib/firebase';
+import { db, collection, addDoc, setDoc, getDocs, deleteDoc, doc, query, orderBy } from '../lib/firebase';
 import { Article, ProjectUpdate, ContactSubmission, Subscriber, INITIAL_ARTICLES, INITIAL_UPDATES } from '../data/contentData';
 
-const ARTICLES_KEY = 'konriver_articles_v1';
-const UPDATES_KEY = 'konriver_updates_v1';
-const CONTACTS_KEY = 'konriver_contacts_v1';
-const SUBSCRIBERS_KEY = 'konriver_subscribers_v1';
+const ARTICLES_KEY = 'konriver_articles_v2';
+const UPDATES_KEY = 'konriver_updates_v2';
+const CONTACTS_KEY = 'konriver_contacts_v2';
+const SUBSCRIBERS_KEY = 'konriver_subscribers_v2';
+
+// Timeout helper so remote Firestore network never hangs user actions
+const withTimeout = <T>(promise: Promise<T>, timeoutMs = 2000): Promise<T> => {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) =>
+      setTimeout(() => reject(new Error('Firestore timeout - falling back to instant local store')), timeoutMs)
+    )
+  ]);
+};
 
 // Helpers for localStorage persistence
 function getLocal<T>(key: string, defaultValue: T): T {
@@ -24,7 +34,7 @@ function setLocal<T>(key: string, value: T): void {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (e) {
-    console.warn('localStorage write error', e);
+    console.warn('localStorage write warning:', e);
   }
 }
 
@@ -34,18 +44,17 @@ export async function getArticles(): Promise<Article[]> {
   try {
     const colRef = collection(db, 'journal_articles');
     const q = query(colRef, orderBy('publishedAt', 'desc'));
-    const snapshot = await getDocs(q);
+    const snapshot = await withTimeout(getDocs(q), 1800);
     if (!snapshot.empty) {
       const remoteArticles = snapshot.docs.map(docSnap => ({
         id: docSnap.id,
         ...docSnap.data()
       })) as Article[];
-      // Sync local
       setLocal(ARTICLES_KEY, remoteArticles);
       return remoteArticles;
     }
   } catch (err) {
-    console.info('Using local articles cache / offline storage:', err);
+    console.info('Using high-speed local articles cache:', err);
   }
   return localArticles;
 }
@@ -55,34 +64,39 @@ export async function saveArticle(article: Omit<Article, 'id'> & { id?: string }
   let savedArticle: Article;
 
   if (article.id && existingArticles.some(a => a.id === article.id)) {
-    // Update
-    savedArticle = { ...article, id: article.id } as Article;
+    // Update existing
+    savedArticle = {
+      ...article,
+      id: article.id,
+      publishedAt: article.publishedAt || new Date().toISOString().split('T')[0]
+    } as Article;
     const updated = existingArticles.map(a => a.id === article.id ? savedArticle : a);
     setLocal(ARTICLES_KEY, updated);
 
+    // Sync to Firestore using setDoc with merge (non-blocking)
     try {
       const docRef = doc(db, 'journal_articles', article.id);
-      await updateDoc(docRef, { ...article });
+      await withTimeout(setDoc(docRef, { ...savedArticle }, { merge: true }), 2500);
     } catch (e) {
-      console.info('Firestore update article skipped, saved locally:', e);
+      console.info('Firestore sync notice (saved locally in browser):', e);
     }
   } else {
-    // Create
-    const newId = 'art_' + Date.now();
+    // Create new
+    const newId = article.id || ('art_' + Date.now());
     savedArticle = {
       ...article,
       id: newId,
       publishedAt: article.publishedAt || new Date().toISOString().split('T')[0]
     };
-    const updated = [savedArticle, ...existingArticles];
+    const updated = [savedArticle, ...existingArticles.filter(a => a.id !== newId)];
     setLocal(ARTICLES_KEY, updated);
 
+    // Sync to Firestore
     try {
-      const colRef = collection(db, 'journal_articles');
-      const docRef = await addDoc(colRef, { ...savedArticle });
-      savedArticle.id = docRef.id;
+      const docRef = doc(db, 'journal_articles', newId);
+      await withTimeout(setDoc(docRef, { ...savedArticle }, { merge: true }), 2500);
     } catch (e) {
-      console.info('Firestore create article skipped, saved locally:', e);
+      console.info('Firestore create notice (saved locally in browser):', e);
     }
   }
 
@@ -96,9 +110,9 @@ export async function deleteArticle(id: string): Promise<void> {
 
   try {
     const docRef = doc(db, 'journal_articles', id);
-    await deleteDoc(docRef);
+    await withTimeout(deleteDoc(docRef), 2000);
   } catch (e) {
-    console.info('Firestore delete skipped, deleted locally:', e);
+    console.info('Firestore delete skipped, updated locally:', e);
   }
 }
 
@@ -108,7 +122,7 @@ export async function getProjectUpdates(): Promise<ProjectUpdate[]> {
   try {
     const colRef = collection(db, 'project_updates');
     const q = query(colRef, orderBy('date', 'desc'));
-    const snapshot = await getDocs(q);
+    const snapshot = await withTimeout(getDocs(q), 1800);
     if (!snapshot.empty) {
       const remoteUpdates = snapshot.docs.map(docSnap => ({
         id: docSnap.id,
@@ -125,35 +139,21 @@ export async function getProjectUpdates(): Promise<ProjectUpdate[]> {
 
 export async function saveProjectUpdate(update: Omit<ProjectUpdate, 'id'> & { id?: string }): Promise<ProjectUpdate> {
   const existing = getLocal<ProjectUpdate[]>(UPDATES_KEY, INITIAL_UPDATES);
-  let saved: ProjectUpdate;
+  const updateId = update.id || ('up_' + Date.now());
+  const saved: ProjectUpdate = {
+    ...update,
+    id: updateId,
+    date: update.date || new Date().toISOString().split('T')[0]
+  };
 
-  if (update.id && existing.some(u => u.id === update.id)) {
-    saved = { ...update, id: update.id } as ProjectUpdate;
-    const updatedList = existing.map(u => u.id === update.id ? saved : u);
-    setLocal(UPDATES_KEY, updatedList);
+  const updatedList = [saved, ...existing.filter(u => u.id !== updateId)];
+  setLocal(UPDATES_KEY, updatedList);
 
-    try {
-      const docRef = doc(db, 'project_updates', update.id);
-      await updateDoc(docRef, { ...update });
-    } catch (e) {
-      console.info('Firestore update skipped, saved locally:', e);
-    }
-  } else {
-    saved = {
-      ...update,
-      id: 'up_' + Date.now(),
-      date: update.date || new Date().toISOString().split('T')[0]
-    };
-    const updatedList = [saved, ...existing];
-    setLocal(UPDATES_KEY, updatedList);
-
-    try {
-      const colRef = collection(db, 'project_updates');
-      const docRef = await addDoc(colRef, { ...saved });
-      saved.id = docRef.id;
-    } catch (e) {
-      console.info('Firestore add skipped, saved locally:', e);
-    }
+  try {
+    const docRef = doc(db, 'project_updates', updateId);
+    await withTimeout(setDoc(docRef, { ...saved }, { merge: true }), 2500);
+  } catch (e) {
+    console.info('Firestore update sync notice:', e);
   }
 
   return saved;
@@ -166,7 +166,7 @@ export async function deleteProjectUpdate(id: string): Promise<void> {
 
   try {
     const docRef = doc(db, 'project_updates', id);
-    await deleteDoc(docRef);
+    await withTimeout(deleteDoc(docRef), 2000);
   } catch (e) {
     console.info('Firestore delete update skipped:', e);
   }
@@ -180,8 +180,9 @@ export async function submitContact(data: {
   message: string;
   consent: boolean;
 }): Promise<{ success: boolean; id: string }> {
+  const contactId = 'cnt_' + Date.now();
   const contact: ContactSubmission = {
-    id: 'cnt_' + Date.now(),
+    id: contactId,
     ...data,
     createdAt: new Date().toISOString(),
     status: 'new'
@@ -191,9 +192,8 @@ export async function submitContact(data: {
   setLocal(CONTACTS_KEY, [contact, ...existing]);
 
   try {
-    const colRef = collection(db, 'contact_inquiries');
-    const docRef = await addDoc(colRef, { ...contact });
-    contact.id = docRef.id;
+    const docRef = doc(db, 'contact_inquiries', contactId);
+    await withTimeout(setDoc(docRef, { ...contact }, { merge: true }), 2500);
   } catch (e) {
     console.info('Firestore contact submission saved locally:', e);
   }
@@ -205,7 +205,7 @@ export async function getContactSubmissions(): Promise<ContactSubmission[]> {
   const localList = getLocal<ContactSubmission[]>(CONTACTS_KEY, []);
   try {
     const colRef = collection(db, 'contact_inquiries');
-    const snapshot = await getDocs(colRef);
+    const snapshot = await withTimeout(getDocs(colRef), 1800);
     if (!snapshot.empty) {
       return snapshot.docs.map(d => ({ id: d.id, ...d.data() })) as ContactSubmission[];
     }
@@ -222,7 +222,7 @@ export async function updateContactStatus(id: string, status: 'new' | 'contacted
 
   try {
     const docRef = doc(db, 'contact_inquiries', id);
-    await updateDoc(docRef, { status });
+    await withTimeout(setDoc(docRef, { status }, { merge: true }), 2000);
   } catch {
     // saved locally
   }
@@ -234,14 +234,14 @@ export async function registerSubscriber(data: {
   email: string;
   consent: boolean;
 }): Promise<{ success: boolean; id: string }> {
+  const subId = 'sub_' + Date.now();
   const subscriber: Subscriber = {
-    id: 'sub_' + Date.now(),
+    id: subId,
     ...data,
     createdAt: new Date().toISOString()
   };
 
   const existing = getLocal<Subscriber[]>(SUBSCRIBERS_KEY, []);
-  // Prevent duplicate emails
   if (existing.some(s => s.email.toLowerCase() === data.email.toLowerCase())) {
     return { success: true, id: 'existing' };
   }
@@ -249,9 +249,8 @@ export async function registerSubscriber(data: {
   setLocal(SUBSCRIBERS_KEY, [subscriber, ...existing]);
 
   try {
-    const colRef = collection(db, 'subscribers');
-    const docRef = await addDoc(colRef, { ...subscriber });
-    subscriber.id = docRef.id;
+    const docRef = doc(db, 'subscribers', subId);
+    await withTimeout(setDoc(docRef, { ...subscriber }, { merge: true }), 2500);
   } catch (e) {
     console.info('Firestore subscriber saved locally:', e);
   }
@@ -263,7 +262,7 @@ export async function getSubscribers(): Promise<Subscriber[]> {
   const localList = getLocal<Subscriber[]>(SUBSCRIBERS_KEY, []);
   try {
     const colRef = collection(db, 'subscribers');
-    const snapshot = await getDocs(colRef);
+    const snapshot = await withTimeout(getDocs(colRef), 1800);
     if (!snapshot.empty) {
       return snapshot.docs.map(d => ({ id: d.id, ...d.data() })) as Subscriber[];
     }

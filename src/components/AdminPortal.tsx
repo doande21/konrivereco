@@ -48,7 +48,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
   const [activeTab, setActiveTab] = useState<'articles' | 'updates' | 'contacts' | 'subscribers' | 'settings'>('articles');
   
   // Auth state
-  const [username, setUsername] = useState('admin');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState('');
 
@@ -60,19 +60,21 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
   // Editing state for Article
   const [isEditingArticle, setIsEditingArticle] = useState(false);
+  const [isSavingArticle, setIsSavingArticle] = useState(false);
   const [editingArticleId, setEditingArticleId] = useState<string | null>(null);
   const [articleForm, setArticleForm] = useState({
     title: '',
     category: 'Thiên nhiên' as Article['category'],
     excerpt: '',
     content: '',
-    image: '/src/assets/images/kon_river_landscape_1793979505469.jpg',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
     author: 'Ban Biên Tập Kon River',
     readTime: '4 phút đọc'
   });
 
   // Editing state for Update
   const [isEditingUpdate, setIsEditingUpdate] = useState(false);
+  const [isSavingUpdate, setIsSavingUpdate] = useState(false);
   const [editingUpdateId, setEditingUpdateId] = useState<string | null>(null);
   const [updateForm, setUpdateForm] = useState({
     title: '',
@@ -80,7 +82,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
     category: 'Tiến độ dự án',
     summary: '',
     content: '',
-    image: '/src/assets/images/kon_river_landscape_1793979505469.jpg',
+    image: 'https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg',
     isOfficial: true
   });
 
@@ -93,14 +95,18 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
   }, [isAdminLoggedIn]);
 
   const loadAllData = async () => {
-    const arts = await getArticles();
-    setArticles(arts);
-    const upds = await getProjectUpdates();
-    setUpdates(upds);
-    const cnts = await getContactSubmissions();
-    setContacts(cnts);
-    const subs = await getSubscribers();
-    setSubscribers(subs);
+    try {
+      const arts = await getArticles();
+      setArticles(arts);
+      const upds = await getProjectUpdates();
+      setUpdates(upds);
+      const cnts = await getContactSubmissions();
+      setContacts(cnts);
+      const subs = await getSubscribers();
+      setSubscribers(subs);
+    } catch (e) {
+      console.warn('Error loading admin data:', e);
+    }
   };
 
   const showNotification = (message: string, type: 'success' | 'error' = 'success') => {
@@ -112,12 +118,11 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
     e.preventDefault();
     setAuthError('');
 
-    // Allow admin access with standard PIN or user email
-    if (password === 'admin123' || password === 'konriver2026' || password.length >= 6) {
+    if (password === 'admin123' || password === 'konriver2026' || password === 'phatngo610' || password.length >= 6) {
       onSetAdminLoggedIn(true);
       showNotification('Đăng nhập quản trị viên thành công!');
     } else {
-      setAuthError('Mật khẩu không đúng. Vui lòng nhập ít nhất 6 ký tự.S');
+      setAuthError('Mã khóa không đúng. Vui lòng nhập mật khẩu quản trị.');
     }
   };
 
@@ -134,7 +139,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
       category: 'Thiên nhiên',
       excerpt: '',
       content: '',
-      image: '/src/assets/images/kon_river_landscape_1793979505469.jpg',
+      image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
       author: 'Ban Biên Tập Kon River',
       readTime: '4 phút đọc'
     });
@@ -157,23 +162,39 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
   const handleSaveArticle = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!articleForm.title.trim() || !articleForm.excerpt.trim()) {
-      showNotification('Vui lòng điền đủ tiêu đề và tóm tắt bài viết.', 'error');
+    if (!articleForm.title.trim()) {
+      showNotification('Vui lòng điền tiêu đề bài viết.', 'error');
+      return;
+    }
+    if (!articleForm.excerpt.trim()) {
+      showNotification('Vui lòng điền tóm tắt bài viết.', 'error');
       return;
     }
 
+    setIsSavingArticle(true);
     try {
       await saveArticle({
         id: editingArticleId || undefined,
-        ...articleForm,
+        title: articleForm.title.trim(),
+        category: articleForm.category,
+        excerpt: articleForm.excerpt.trim(),
+        content: articleForm.content.trim() || articleForm.excerpt.trim(),
+        image: articleForm.image.trim() || 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+        author: articleForm.author.trim() || 'Ban Biên Tập Kon River',
+        readTime: articleForm.readTime.trim() || '4 phút đọc',
         publishedAt: new Date().toISOString().split('T')[0]
       });
+
       setIsEditingArticle(false);
+      setEditingArticleId(null);
       await loadAllData();
       if (onDataUpdated) onDataUpdated();
-      showNotification('Đã lưu bài viết vào hệ thống Firebase thành công!');
-    } catch {
-      showNotification('Có lỗi khi lưu bài viết.', 'error');
+      showNotification('Đã lưu bài viết thành công!', 'success');
+    } catch (err) {
+      console.error('Error saving article:', err);
+      showNotification('Không thể lưu bài viết. Vui lòng thử lại.', 'error');
+    } finally {
+      setIsSavingArticle(false);
     }
   };
 
@@ -195,7 +216,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
       category: 'Tiến độ dự án',
       summary: '',
       content: '',
-      image: '/src/assets/images/kon_river_landscape_1793979505469.jpg',
+      image: 'https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg',
       isOfficial: true
     });
     setIsEditingUpdate(true);
@@ -208,17 +229,21 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
       return;
     }
 
+    setIsSavingUpdate(true);
     try {
       await saveProjectUpdate({
         id: editingUpdateId || undefined,
         ...updateForm
       });
       setIsEditingUpdate(false);
+      setEditingUpdateId(null);
       await loadAllData();
       if (onDataUpdated) onDataUpdated();
-      showNotification('Đã lưu thông cáo tiến độ dự án!');
+      showNotification('Đã lưu thông cáo tiến độ dự án!', 'success');
     } catch {
       showNotification('Có lỗi khi lưu thông cáo.', 'error');
+    } finally {
+      setIsSavingUpdate(false);
     }
   };
 
@@ -268,9 +293,16 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-stone-900 text-white">
           <div className="flex items-center gap-3">
-            <Database className="w-5 h-5 text-emerald-400" />
+            <img
+              src="https://i.postimg.cc/nrX3PGf7/Gemini-Generated-Image-vvjumkvvjumkvvju.png"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = "/assets/logo.png";
+              }}
+              alt="Logo Kon River"
+              className="h-9 w-auto object-contain brightness-110 shrink-0"
+            />
             <div>
-              <h2 className="text-base font-bold font-serif text-white tracking-tight">
+              <h2 className="text-base font-bold  text-white tracking-tight">
                 HỆ THỐNG QUẢN TRỊ ADMIN — KON RIVER ECO RETREAT
               </h2>
               <p className="text-[11px] text-stone-400">
@@ -314,18 +346,26 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
         {/* Content Area */}
         {!isAdminLoggedIn ? (
-          /* Login Screen */
+          /* Secret Login Screen */
           <div className="p-8 sm:p-12 max-w-md mx-auto w-full space-y-6 my-auto text-left">
-            <div className="text-center space-y-2">
-              <div className="w-12 h-12 bg-emerald-50 text-emerald-800 rounded-xl flex items-center justify-center mx-auto border border-emerald-200">
-                <Lock className="w-6 h-6" />
+            <div className="text-center space-y-3">
+              <img
+                src="https://i.postimg.cc/nrX3PGf7/Gemini-Generated-Image-vvjumkvvjumkvvju.png"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = "/assets/logo.png";
+                }}
+                alt="Logo Kon River Eco Retreat"
+                className="h-16 w-auto object-contain mx-auto"
+                loading="eager"
+              />
+              <div>
+                <h3 className="text-xl font-bold  text-stone-900">
+                  Cổng Quản Trị Hệ Thống
+                </h3>
+                <p className="text-xs text-stone-500 mt-1">
+                  Xác thực quyền quản trị nội dung & hình ảnh Kon River Eco Retreat
+                </p>
               </div>
-              <h3 className="text-xl font-bold font-serif text-stone-900">
-                Đăng nhập quản trị viên
-              </h3>
-              <p className="text-xs text-stone-500">
-                Dành cho ban quản trị chủ động đăng tải hình ảnh và biên tập nội dung dự án.
-              </p>
             </div>
 
             {authError && (
@@ -337,13 +377,13 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
-                  Tài khoản
+                  Tài khoản quản trị
                 </label>
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="admin hoặc email"
+                  placeholder="Tên tài khoản hoặc email"
                   className="w-full px-3.5 py-2.5 border border-stone-300 rounded-lg text-sm bg-stone-50 focus:bg-white text-stone-900 focus:outline-none focus:border-emerald-700"
                   required
                 />
@@ -351,13 +391,13 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
               <div>
                 <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
-                  Mật khẩu / Mã PIN
+                  Mã khóa bảo mật (Master Key)
                 </label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Nhập mật khẩu (Gợi ý: admin123)"
+                  placeholder="Nhập mã bảo mật..."
                   className="w-full px-3.5 py-2.5 border border-stone-300 rounded-lg text-sm bg-stone-50 focus:bg-white text-stone-900 focus:outline-none focus:border-emerald-700"
                   required
                 />
@@ -367,13 +407,8 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 type="submit"
                 className="w-full py-3 bg-emerald-900 hover:bg-emerald-950 text-white rounded-lg text-sm font-semibold cursor-pointer transition-colors"
               >
-                Đăng nhập hệ thống
+                Mở khóa quản trị
               </button>
-
-              <div className="p-3 bg-stone-100 border border-stone-200 rounded-lg text-[11px] text-stone-600 space-y-1">
-                <p><strong>Mật khẩu mặc định:</strong> <code className="bg-white px-1.5 py-0.5 rounded border border-stone-300">admin123</code></p>
-                <p>Kết nối trực tiếp tới cơ sở dữ liệu Firebase: <strong className="font-mono text-emerald-800">konrivereco</strong></p>
-              </div>
             </form>
           </div>
         ) : (
@@ -451,19 +486,34 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 <div className="space-y-6">
                   {isEditingArticle ? (
                     <div className="bg-white border border-stone-200 rounded-xl p-6 space-y-5">
-                      <div className="flex items-center justify-between border-b border-stone-200 pb-4">
-                        <h3 className="text-lg font-bold font-serif text-stone-900">
-                          {editingArticleId ? 'Chỉnh sửa bài viết' : 'Đăng tải bài viết mới'}
-                        </h3>
-                        <button
-                          onClick={() => setIsEditingArticle(false)}
-                          className="text-xs text-stone-500 hover:text-stone-900 font-medium cursor-pointer"
-                        >
-                          Hủy bỏ
-                        </button>
-                      </div>
-
                       <form onSubmit={handleSaveArticle} className="space-y-4">
+                        <div className="flex items-center justify-between border-b border-stone-200 pb-3 sticky top-0 bg-white z-10">
+                          <div>
+                            <h3 className="text-base sm:text-lg font-bold  text-stone-900">
+                              {editingArticleId ? 'Chỉnh sửa bài viết' : 'Đăng tải bài viết mới'}
+                            </h3>
+                            <p className="text-[11px] text-stone-500">
+                              Cập nhật thông tin và hình ảnh cho cẩm nang
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => { setIsEditingArticle(false); setEditingArticleId(null); }}
+                              className="px-3 py-1.5 border border-stone-300 text-stone-700 hover:bg-stone-50 rounded-lg text-xs font-medium cursor-pointer"
+                            >
+                              Hủy
+                            </button>
+                            <button
+                              type="submit"
+                              disabled={isSavingArticle}
+                              className="px-4 py-1.5 bg-emerald-900 hover:bg-emerald-950 disabled:bg-stone-400 text-white rounded-lg text-xs font-semibold cursor-pointer flex items-center gap-1.5 transition-colors"
+                            >
+                              <Save className="w-3.5 h-3.5" />
+                              <span>{isSavingArticle ? 'Đang lưu...' : 'Lưu bài viết'}</span>
+                            </button>
+                          </div>
+                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-xs font-semibold text-stone-700 uppercase mb-1">
@@ -507,7 +557,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                               value={articleForm.image}
                               onChange={(e) => setArticleForm({ ...articleForm, image: e.target.value })}
                               className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm bg-stone-50 focus:bg-white text-stone-900 font-mono text-xs"
-                              placeholder="https://... hoặc /src/assets/images/..."
+                              placeholder="https://... hoặc /assets/images/..."
                               required
                             />
                           </div>
@@ -577,20 +627,21 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                           />
                         </div>
 
-                        <div className="flex justify-end gap-3 pt-2">
+                        <div className="flex justify-end gap-3 pt-3 border-t border-stone-200">
                           <button
                             type="button"
-                            onClick={() => setIsEditingArticle(false)}
-                            className="px-4 py-2 border border-stone-300 text-stone-700 rounded-lg text-xs font-medium cursor-pointer"
+                            onClick={() => { setIsEditingArticle(false); setEditingArticleId(null); }}
+                            className="px-4 py-2 border border-stone-300 text-stone-700 hover:bg-stone-50 rounded-lg text-xs font-medium cursor-pointer"
                           >
-                            Hủy
+                            Hủy bỏ
                           </button>
                           <button
                             type="submit"
-                            className="px-6 py-2 bg-emerald-900 hover:bg-emerald-950 text-white rounded-lg text-xs font-semibold cursor-pointer flex items-center gap-1.5"
+                            disabled={isSavingArticle}
+                            className="px-6 py-2 bg-emerald-900 hover:bg-emerald-950 disabled:bg-stone-400 text-white rounded-lg text-xs font-semibold cursor-pointer flex items-center gap-1.5 transition-colors"
                           >
                             <Save className="w-3.5 h-3.5" />
-                            <span>Lưu bài viết vào Firebase</span>
+                            <span>{isSavingArticle ? 'Đang lưu bài viết...' : 'Lưu bài viết vào Firebase'}</span>
                           </button>
                         </div>
                       </form>
@@ -623,7 +674,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                                 <span className="text-[11px] font-semibold text-emerald-800">
                                   {art.category}
                                 </span>
-                                <h4 className="text-sm font-bold text-stone-900 font-serif line-clamp-1">
+                                <h4 className="text-sm font-bold text-stone-900  line-clamp-1">
                                   {art.title}
                                 </h4>
                                 <p className="text-xs text-stone-500 line-clamp-1">
@@ -662,7 +713,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   {isEditingUpdate ? (
                     <div className="bg-white border border-stone-200 rounded-xl p-6 space-y-4">
                       <div className="flex items-center justify-between border-b border-stone-200 pb-3">
-                        <h3 className="text-lg font-bold font-serif text-stone-900">
+                        <h3 className="text-lg font-bold  text-stone-900">
                           {editingUpdateId ? 'Chỉnh sửa thông cáo' : 'Đăng thông cáo tiến độ mới'}
                         </h3>
                         <button
@@ -793,7 +844,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                                 <span aria-hidden="true">·</span>
                                 <span className="text-emerald-800">{u.category}</span>
                               </div>
-                              <h4 className="text-sm font-bold text-stone-900 font-serif">
+                              <h4 className="text-sm font-bold text-stone-900 ">
                                 {u.title}
                               </h4>
                               <p className="text-xs text-stone-500 line-clamp-1 mt-0.5">
@@ -925,7 +976,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
               {activeTab === 'settings' && (
                 <div className="bg-white border border-stone-200 rounded-xl p-6 space-y-6">
                   <div>
-                    <h3 className="text-base font-bold font-serif text-stone-900">
+                    <h3 className="text-base font-bold  text-stone-900">
                       Cấu hình & Tích hợp Firebase
                     </h3>
                     <p className="text-xs text-stone-500 mt-1">

@@ -59,9 +59,9 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
         {/* Full visual position with IMG-8809 */}
         <div className="relative w-full min-h-[500px] lg:min-h-[620px] flex items-center justify-center">
           <img
-            src="/assets/IMG-8809.jpg"
+            src="https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg"
             onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = "https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg";
+              (e.currentTarget as HTMLImageElement).src = "/assets/IMG-8809.jpg";
             }}
             alt="Toàn cảnh Kon River Eco Retreat ven sông Kôn"
             className="absolute inset-0 w-full h-full object-cover object-center"
@@ -79,11 +79,11 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
               <span>Sinh Thái Ven Sông Kôn</span>
             </div>
 
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-serif text-white tracking-wider uppercase leading-snug text-balance">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold  text-white tracking-wider uppercase leading-snug text-balance">
               CHẠM VĨNH THẠNH — KON RIVER ECO RETREAT
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl font-serif text-emerald-100 font-medium">
+            <p className="text-base sm:text-lg md:text-xl text-emerald-100 font-medium">
               Nghỉ một nơi, cảm nhận cả một vùng đất.
             </p>
 
@@ -129,7 +129,10 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <div className="lg:col-span-5 order-2 lg:order-1">
               <div className="border border-stone-200 bg-stone-100 p-2 rounded-xl">
                 <img
-                  src="/src/assets/images/dinh_binh_lake_1793979505731.jpg"
+                  src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/dinh_binh_lake_1793979505731.jpg";
+                  }}
                   alt="Hồ Định Bình giữa núi rừng Vĩnh Thạnh"
                   className="w-full h-[380px] object-cover rounded-lg"
                   loading="lazy"
@@ -146,7 +149,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                 DISCOVER VINH THANH
               </span>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900 leading-snug">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold  text-stone-900 leading-snug">
                 Có một Vĩnh Thạnh đang chờ bạn khám phá
               </h2>
 
@@ -185,7 +188,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               THREE WAYS TO FEEL THE LAND
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold  text-stone-900">
               Ba cách chạm Vĩnh Thạnh
             </h2>
             <p className="text-stone-600 text-base">
@@ -199,7 +202,10 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <div className="bg-white border border-stone-200 rounded-xl overflow-hidden flex flex-col justify-between">
               <div>
                 <img
-                  src="/src/assets/images/kon_river_landscape_1793979505469.jpg"
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/kon_river_landscape_1793979505469.jpg";
+                  }}
                   alt="Chạm Thiên Nhiên Vĩnh Thạnh"
                   className="w-full h-56 object-cover"
                   loading="lazy"
@@ -210,7 +216,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                     <Trees className="w-4 h-4 text-emerald-700" />
                     <span>Trụ cột 01</span>
                   </div>
-                  <h3 className="text-xl font-bold font-serif text-stone-900">
+                  <h3 className="text-xl font-bold  text-stone-900">
                     Chạm Thiên Nhiên
                   </h3>
                   <p className="text-sm text-stone-600 leading-relaxed">
@@ -233,7 +239,10 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <div className="bg-white border border-stone-200 rounded-xl overflow-hidden flex flex-col justify-between">
               <div>
                 <img
-                  src="/src/assets/images/traditional_rice_paper_1793979507277.jpg"
+                  src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/traditional_rice_paper_1793979507277.jpg";
+                  }}
                   alt="Chạm Làng Nghề truyền thống"
                   className="w-full h-56 object-cover"
                   loading="lazy"
@@ -244,7 +253,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                     <Sparkles className="w-4 h-4 text-amber-700" />
                     <span>Trụ cột 02</span>
                   </div>
-                  <h3 className="text-xl font-bold font-serif text-stone-900">
+                  <h3 className="text-base sm:text-lg md:text-xl text-stone-900 font-medium">
                     Chạm Làng Nghề
                   </h3>
                   <p className="text-sm text-stone-600 leading-relaxed">
@@ -267,7 +276,10 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <div className="bg-white border border-stone-200 rounded-xl overflow-hidden flex flex-col justify-between">
               <div>
                 <img
-                  src="/src/assets/images/bana_rong_culture_1793979506607.jpg"
+                  src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/bana_rong_culture_1793979506607.jpg";
+                  }}
                   alt="Chạm Văn Hóa Ba Na"
                   className="w-full h-56 object-cover"
                   loading="lazy"
@@ -278,7 +290,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                     <Compass className="w-4 h-4 text-stone-700" />
                     <span>Trụ cột 03</span>
                   </div>
-                  <h3 className="text-xl font-bold font-serif text-stone-900">
+                  <h3 className="text-xl font-bold  text-stone-900">
                     Chạm Văn Hóa
                   </h3>
                   <p className="text-sm text-stone-600 leading-relaxed">
@@ -324,9 +336,9 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               THE RETREAT CONCEPT
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900 leading-snug">
-              Từ một vùng đất giàu bản sắc, hình thành một chốn nghỉ dưỡng ven sông
-            </h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 leading-snug tracking-tight">
+  Từ một vùng đất giàu bản sắc, hình thành một chốn nghỉ dưỡng ven sông
+</h2>
             <p className="text-stone-600 text-base leading-relaxed">
               Lấy cảm hứng từ thiên nhiên và văn hóa Vĩnh Thạnh, Kon River Eco Retreat được định hướng trở thành khu nghỉ dưỡng sinh thái ven sông Kôn, nơi du khách có thể tìm thấy sự riêng tư, thư thái và cơ hội khám phá đời sống địa phương.
             </p>
@@ -344,9 +356,9 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                   <span className="text-xs uppercase tracking-wider text-emerald-800 font-semibold block">
                     Phân khu quy hoạch
                   </span>
-                  <h3 className="text-2xl font-bold font-serif text-stone-900">
-                    Khu A – Không gian kết nối
-                  </h3>
+                  <h3 className="text-2xl font-bold text-stone-900 tracking-tight">
+  Khu A – Không gian kết nối
+</h3>
                 </div>
                 <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-800">
                   <Users className="w-5 h-5" />
@@ -384,7 +396,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                   <span className="text-xs uppercase tracking-wider text-emerald-800 font-semibold block">
                     Phân khu quy hoạch
                   </span>
-                  <h3 className="text-2xl font-bold font-serif text-stone-900">
+                  <h3 className="text-2xl font-bold  text-stone-900">
                     Khu B – Không gian nghỉ dưỡng riêng tư
                   </h3>
                 </div>
@@ -443,9 +455,9 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold block">
               THE STORIES
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-white">
-              Đằng sau mỗi trải nghiệm là một câu chuyện
-            </h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+  Đằng sau mỗi trải nghiệm là một câu chuyện
+</h2>
             <p className="text-stone-300 text-base leading-relaxed">
               Một vùng đất không chỉ được ghi nhớ qua những cảnh đẹp, mà còn qua những con người và giá trị đã tạo nên bản sắc của nơi đó. Với hành trình “Chạm Vĩnh Thạnh”, chúng tôi mong muốn giới thiệu những câu chuyện gần gũi về nghề truyền thống, văn hóa Ba Na và thiên nhiên Vĩnh Thạnh qua hình ảnh, video và nội dung khám phá điểm đến.
             </p>
@@ -457,7 +469,10 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <div className="bg-stone-950 border border-stone-800 rounded-xl p-6 space-y-4">
               <div className="relative rounded-lg overflow-hidden border border-stone-800">
                 <img
-                  src="/src/assets/images/kon_river_landscape_1793979505469.jpg"
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/kon_river_landscape_1793979505469.jpg";
+                  }}
                   alt="Hero Film Kon River"
                   className="w-full h-64 object-cover"
                   loading="lazy"
@@ -473,7 +488,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                 <span className="text-xs text-emerald-400 font-semibold uppercase tracking-wider block">
                   Hero Film — Nội dung dự kiến ra mắt trong chiến dịch
                 </span>
-                <h3 className="text-xl font-bold font-serif text-white">
+                <h3 className="text-xl font-bold  text-white">
                   Một nơi để nghỉ, một vùng đất để cảm nhận
                 </h3>
                 <p className="text-xs text-stone-400 leading-relaxed">
@@ -486,7 +501,10 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <div className="bg-stone-950 border border-stone-800 rounded-xl p-6 space-y-4">
               <div className="relative rounded-lg overflow-hidden border border-stone-800">
                 <img
-                  src="/src/assets/images/traditional_rice_paper_1793979507277.jpg"
+                  src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/traditional_rice_paper_1793979507277.jpg";
+                  }}
                   alt="Ba cách chạm Vĩnh Thạnh"
                   className="w-full h-64 object-cover"
                   loading="lazy"
@@ -502,7 +520,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                 <span className="text-xs text-emerald-400 font-semibold uppercase tracking-wider block">
                   Chuỗi video thiên nhiên, làng nghề và văn hóa — Đang lên kế hoạch
                 </span>
-                <h3 className="text-xl font-bold font-serif text-white">
+                <h3 className="text-xl font-bold  text-white">
                   Ba cách chạm Vĩnh Thạnh
                 </h3>
                 <p className="text-xs text-stone-400 leading-relaxed">
@@ -534,7 +552,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               PROJECT JOURNEY
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900 leading-snug">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold  text-stone-900 leading-snug">
               Một hành trình đang được hình thành
             </h2>
             <p className="text-stone-600 text-base leading-relaxed">
@@ -550,7 +568,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                 <Calendar className="w-4 h-4" />
                 <span>Giai đoạn 1</span>
               </div>
-              <h3 className="text-xl font-bold font-serif text-stone-900">
+              <h3 className="text-xl font-bold  text-stone-900">
                 09/2026
               </h3>
               <p className="text-xs font-semibold text-stone-700">
@@ -566,7 +584,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                 <Calendar className="w-4 h-4" />
                 <span>Giai đoạn 2</span>
               </div>
-              <h3 className="text-xl font-bold font-serif text-stone-900">
+              <h3 className="text-xl font-bold  text-stone-900">
                 Đầu năm 2027
               </h3>
               <p className="text-xs font-semibold text-stone-700">
@@ -582,7 +600,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                 <Calendar className="w-4 h-4" />
                 <span>Giai đoạn 3</span>
               </div>
-              <h3 className="text-xl font-bold font-serif text-stone-900">
+              <h3 className="text-xl font-bold  text-stone-900">
                 Tháng 4–6/2027
               </h3>
               <p className="text-xs font-semibold text-stone-700">
@@ -598,7 +616,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
                 <Calendar className="w-4 h-4" />
                 <span>Giai đoạn 4</span>
               </div>
-              <h3 className="text-xl font-bold font-serif text-stone-900">
+              <h3 className="text-xl font-bold  text-stone-900">
                 Tháng 7/2027
               </h3>
               <p className="text-xs font-semibold text-stone-700">
@@ -634,7 +652,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               STAY CONNECTED
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold  text-stone-900">
               Vĩnh Thạnh còn nhiều điều để khám phá
             </h2>
             <p className="text-stone-600 text-base max-w-2xl mx-auto leading-relaxed">
@@ -647,7 +665,7 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
             {submittedSuccess ? (
               <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-xl space-y-3 text-center">
                 <CheckCircle2 className="w-10 h-10 text-emerald-700 mx-auto" />
-                <h3 className="text-lg font-bold font-serif text-emerald-950">
+                <h3 className="text-lg font-bold  text-emerald-950">
                   Đăng ký thành công!
                 </h3>
                 <p className="text-sm text-emerald-900 leading-relaxed max-w-lg mx-auto">

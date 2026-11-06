@@ -16,7 +16,7 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
           <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold block">
             LOCAL EXPERIENCES
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold  text-white tracking-tight">
             Ba cách chạm, một hành trình khám phá
           </h1>
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
@@ -36,7 +36,10 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
             <div className="lg:col-span-5">
               <div className="border border-stone-200 bg-stone-100 p-2 rounded-xl">
                 <img
-                  src="/src/assets/images/kon_river_landscape_1793979505469.jpg"
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/kon_river_landscape_1793979505469.jpg";
+                  }}
                   alt="Chạm Thiên Nhiên Vĩnh Thạnh"
                   className="w-full h-[380px] object-cover rounded-lg"
                   loading="lazy"
@@ -54,7 +57,7 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
                 <span>Trải nghiệm 1</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-bold  text-stone-900 leading-snug">
                 Chạm vào khoảng xanh, tìm lại những phút giây bình yên
               </h2>
 
@@ -118,7 +121,7 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
               <Sparkles className="w-4 h-4 text-amber-700" />
               <span>Trải nghiệm 2</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
+            <h2 className="text-2xl sm:text-3xl font-bold  text-stone-900">
               Có những giá trị được tạo nên từ đôi bàn tay
             </h2>
             <p className="text-stone-600 text-base leading-relaxed">
@@ -132,7 +135,10 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
             <div className="bg-white border border-stone-200 rounded-xl overflow-hidden flex flex-col justify-between">
               <div>
                 <img
-                  src="/src/assets/images/traditional_rice_paper_1793979507277.jpg"
+                  src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/traditional_rice_paper_1793979507277.jpg";
+                  }}
                   alt="Nghề làm bánh tráng truyền thống"
                   className="w-full h-64 object-cover"
                   loading="lazy"
@@ -142,9 +148,9 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
                   <span className="text-xs uppercase tracking-wider text-amber-800 font-semibold block">
                     Câu chuyện 01
                   </span>
-                  <h3 className="text-xl font-bold font-serif text-stone-900">
-                    Nghề làm bánh tráng
-                  </h3>
+                  <h3 className="text-xl font-bold text-stone-900 tracking-tight">
+  Nghề làm bánh tráng
+</h3>
                   <p className="text-sm text-stone-600 leading-relaxed">
                     Từ những công đoạn chế biến nguyên liệu đến việc tráng và phơi bánh, nghề làm bánh tráng cho thấy sự khéo léo và kinh nghiệm tích lũy của người làm nghề. Mỗi công đoạn có thể trở thành một lát cắt giàu hình ảnh để giới thiệu giá trị của lao động thủ công.
                   </p>
@@ -175,9 +181,9 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
                   <span className="text-xs uppercase tracking-wider text-amber-800 font-semibold block">
                     Câu chuyện 02
                   </span>
-                  <h3 className="text-xl font-bold font-serif text-stone-900">
-                    Nghề nấu rượu truyền thống
-                  </h3>
+                  <h3 className="text-xl font-bold text-stone-900 tracking-tight">
+  Nghề nấu rượu truyền thống
+</h3>
                   <p className="text-sm text-stone-600 leading-relaxed">
                     Nghề nấu rượu là một chủ đề để tìm hiểu phương pháp sản xuất, kinh nghiệm và câu chuyện gắn với sản vật địa phương. Nội dung website tập trung vào giá trị văn hóa và quy trình làm nghề, thay vì khuyến khích tiêu thụ đồ uống có cồn.
                   </p>
@@ -217,7 +223,10 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
             <div className="lg:col-span-5 order-2 lg:order-1">
               <div className="border border-stone-200 bg-stone-100 p-2 rounded-xl">
                 <img
-                  src="/src/assets/images/bana_rong_culture_1793979506607.jpg"
+                  src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/bana_rong_culture_1793979506607.jpg";
+                  }}
                   alt="Dệt thổ cẩm Hà Ri và nhà Rông Ba Na"
                   className="w-full h-[400px] object-cover rounded-lg"
                   loading="lazy"
@@ -235,9 +244,9 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
                 <span>Trải nghiệm 3</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
-                Chạm vào hoa văn, lắng nghe câu chuyện văn hóa
-              </h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 leading-snug tracking-tight">
+  Chạm vào hoa văn, lắng nghe câu chuyện văn hóa
+</h2>
 
               <div className="text-stone-600 text-base leading-relaxed space-y-4">
                 <p>
@@ -273,9 +282,9 @@ export const PageExperiences: React.FC<PageExperiencesProps> = ({ onNavigate, on
       {/* SECTION CUỐI – KHÁM PHÁ THEO CÁCH CỦA BẠN */}
       <section className="py-20 bg-stone-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
-            Bạn muốn bắt đầu bằng trải nghiệm nào?
-          </h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+  Bạn muốn bắt đầu bằng trải nghiệm nào?
+</h2>
           <p className="text-stone-600 text-base leading-relaxed max-w-2xl mx-auto">
             Thiên nhiên, làng nghề hay văn hóa — mỗi lựa chọn mở ra một câu chuyện khác nhau. Không có một cách duy nhất để cảm nhận một vùng đất. Hãy chọn điều khiến bạn tò mò, tìm hiểu những câu chuyện phía sau và để Vĩnh Thạnh trở nên gần gũi hơn qua từng khám phá.
           </p>

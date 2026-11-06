@@ -18,7 +18,7 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
               <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold block">
                 DISCOVER VINH THANH
               </span>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold  text-white tracking-tight leading-tight">
                 Vĩnh Thạnh – Nơi thiên nhiên và văn hóa cùng kể chuyện
               </h1>
               <div className="text-stone-300 text-base sm:text-lg leading-relaxed space-y-4 max-w-2xl font-normal">
@@ -37,7 +37,10 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
             <div className="lg:col-span-5">
               <div className="border border-stone-800 bg-stone-950 p-2 rounded-xl">
                 <img
-                  src="/src/assets/images/kon_river_landscape_1793979505469.jpg"
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/kon_river_landscape_1793979505469.jpg";
+                  }}
                   alt="Thiên nhiên Vĩnh Thạnh Bình Định"
                   className="w-full h-[360px] lg:h-[420px] object-cover rounded-lg"
                   loading="eager"
@@ -62,7 +65,7 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               CẢNH SẮC NGUYÊN SƠ
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold  text-stone-900">
               Đi theo dòng nước, khám phá những khoảng xanh
             </h2>
             <p className="text-stone-600 text-base">
@@ -81,14 +84,17 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
                   </div>
                   <div>
                     <span className="text-xs text-emerald-800 font-semibold uppercase">Điểm nhấn số 01</span>
-                    <h3 className="text-xl font-bold font-serif text-stone-900">
-                      Sông Kôn – Dòng chảy kết nối vùng đất
-                    </h3>
+                    <h3 className="text-xl font-bold text-stone-900 tracking-tight">
+  Sông Kôn – Dòng chảy kết nối vùng đất
+</h3>
                   </div>
                 </div>
 
                 <img
-                  src="/src/assets/images/kon_river_landscape_1793979505469.jpg"
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/kon_river_landscape_1793979505469.jpg";
+                  }}
                   alt="Dòng sông Kôn kết nối Vĩnh Thạnh"
                   className="w-full h-56 object-cover rounded-lg border border-stone-200"
                   loading="lazy"
@@ -114,14 +120,17 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
                   </div>
                   <div>
                     <span className="text-xs text-emerald-800 font-semibold uppercase">Điểm nhấn số 02</span>
-                    <h3 className="text-xl font-bold font-serif text-stone-900">
+                    <h3 className="text-xl font-bold  text-stone-900">
                       Hồ Định Bình – Khoảng xanh giữa núi rừng
                     </h3>
                   </div>
                 </div>
 
                 <img
-                  src="/src/assets/images/dinh_binh_lake_1793979505731.jpg"
+                  src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/dinh_binh_lake_1793979505731.jpg";
+                  }}
                   alt="Hồ Định Bình Vĩnh Thạnh"
                   className="w-full h-56 object-cover rounded-lg border border-stone-200"
                   loading="lazy"
@@ -141,9 +150,9 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
             {/* 3. Suối Tà Má */}
             <div className="border border-stone-200 rounded-xl p-8 bg-stone-50 space-y-4">
               <span className="text-xs text-stone-500 font-semibold uppercase">Điểm đến sinh thái</span>
-              <h3 className="text-xl font-bold font-serif text-stone-900">
-                Suối Tà Má – Vẻ đẹp gần gũi thiên nhiên
-              </h3>
+              <h3 className="text-xl font-bold text-stone-900 tracking-tight">
+  Suối Tà Má – Vẻ đẹp gần gũi thiên nhiên
+</h3>
               <p className="text-sm text-stone-600 leading-relaxed">
                 Trong câu chuyện về Vĩnh Thạnh, suối Tà Má là một trong những địa danh được lựa chọn để gợi mở trải nghiệm khám phá cảnh quan địa phương. Nước suối trong vắt len lỏi qua các ghềnh đá, bao quanh bởi rừng cây râm mát bốn mùa.
               </p>
@@ -155,7 +164,7 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
             {/* 4. Thác Hang Dơi & Nguồn nước nóng */}
             <div className="border border-stone-200 rounded-xl p-8 bg-stone-50 space-y-4">
               <span className="text-xs text-stone-500 font-semibold uppercase">Điểm đến lân cận</span>
-              <h3 className="text-xl font-bold font-serif text-stone-900">
+              <h3 className="text-xl font-bold  text-stone-900">
                 Thác Hang Dơi và những điểm đến thiên nhiên lân cận
               </h3>
               <p className="text-sm text-stone-600 leading-relaxed">
@@ -192,7 +201,10 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
             <div className="lg:col-span-5">
               <div className="border border-stone-200 bg-white p-2 rounded-xl">
                 <img
-                  src="/src/assets/images/bana_rong_culture_1793979506607.jpg"
+                  src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/bana_rong_culture_1793979506607.jpg";
+                  }}
                   alt="Văn hóa Ba Na tại Vĩnh Thạnh"
                   className="w-full h-[400px] object-cover rounded-lg"
                   loading="lazy"
@@ -211,9 +223,9 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
                 <span>BẢN SẮC CỘNG ĐỒNG</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900 leading-snug">
-                Một vùng đất được gìn giữ qua những câu chuyện
-              </h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 leading-snug tracking-tight">
+  Một vùng đất được gìn giữ qua những câu chuyện
+</h2>
 
               <div className="text-stone-600 text-base leading-relaxed space-y-4">
                 <p>
@@ -245,15 +257,15 @@ export const PageDiscover: React.FC<PageDiscoverProps> = ({ onNavigate }) => {
       {/* LỜI KẾT CỦA TRANG */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
-            Vĩnh Thạnh không chỉ có một điều để nhớ.
-          </h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+  Vĩnh Thạnh không chỉ có một điều để nhớ.
+</h2>
           <p className="text-stone-600 text-base leading-relaxed max-w-2xl mx-auto">
             Có người nhớ về dòng sông, có người ấn tượng với những sản phẩm thủ công, cũng có người muốn tìm hiểu sâu hơn về văn hóa địa phương. Và chính sự đa dạng ấy tạo nên tinh thần của hành trình:
           </p>
-          <p className="text-xl sm:text-2xl font-serif text-emerald-900 font-bold">
-            Nghỉ một nơi, cảm nhận cả một vùng đất.
-          </p>
+          <p className="text-base sm:text-lg md:text-xl text-emerald-900 font-medium">
+  Nghỉ một nơi, cảm nhận cả một vùng đất.
+</p>
           <div className="pt-4 flex justify-center gap-4">
             <button
               onClick={() => onNavigate('experiences')}

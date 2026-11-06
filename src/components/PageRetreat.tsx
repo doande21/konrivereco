@@ -19,9 +19,9 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
               <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold block">
                 THE RETREAT — KON RIVER ECO RETREAT
               </span>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight leading-tight">
-                Một chốn nghỉ ven sông, kết nối cùng bản sắc vùng đất
-              </h1>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+  Một chốn nghỉ ven sông, kết nối cùng bản sắc vùng đất
+</h1>
               <div className="text-stone-300 text-base sm:text-lg leading-relaxed space-y-4 max-w-2xl font-normal">
                 <p>
                   Kon River Eco Retreat là dự án khu du lịch nghỉ dưỡng ven sông Kôn do Tân Tiến Phát phát triển, được định hướng kết hợp không gian nghỉ dưỡng sinh thái với các hoạt động khám phá thiên nhiên và văn hóa địa phương.
@@ -44,9 +44,9 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
             <div className="lg:col-span-5">
               <div className="border border-stone-800 bg-stone-950 p-2 rounded-xl">
                 <img
-                  src="/assets/IMG-8809.jpg"
+                  src="https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg"
                   onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = "https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg";
+                    (e.currentTarget as HTMLImageElement).src = "/assets/IMG-8809.jpg";
                   }}
                   alt="Kon River Eco Retreat ven sông Kôn"
                   className="w-full h-[380px] object-cover rounded-lg"
@@ -70,9 +70,9 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
           <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
             TRIẾT LÝ PHÁT TRIỂN
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900">
-            Nghỉ dưỡng không tách rời vùng đất
-          </h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 tracking-tight">
+  Nghỉ dưỡng không tách rời vùng đất
+</h2>
           <div className="text-stone-600 text-base sm:text-lg leading-relaxed space-y-4 max-w-3xl mx-auto font-normal">
             <p>
               Kon River được phát triển từ ý tưởng rằng một chuyến nghỉ dưỡng có thể trở nên ý nghĩa hơn khi du khách hiểu và kết nối với nơi mình đến.
@@ -82,9 +82,9 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
             </p>
           </div>
           <div className="pt-4">
-            <p className="text-xl sm:text-2xl font-serif text-emerald-900 font-bold">
-              Một nơi để nghỉ. Một vùng đất để cảm nhận.
-            </p>
+            <p className="text-xl sm:text-2xl text-emerald-900 font-bold tracking-tight">
+  Một nơi để nghỉ. Một vùng đất để cảm nhận.
+</p>
           </div>
         </div>
       </section>
@@ -97,7 +97,7 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               QUY HOẠCH GẦN 2 HA
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif text-stone-900">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold  text-stone-900">
               Hai không gian, một trải nghiệm
             </h2>
             <p className="text-stone-600 text-base">
@@ -115,9 +115,9 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
                     <span className="text-xs uppercase tracking-wider text-emerald-800 font-semibold block">
                       Phân khu A
                     </span>
-                    <h3 className="text-2xl font-bold font-serif text-stone-900">
-                      Khu A – Gặp gỡ và kết nối
-                    </h3>
+                    <h3 className="text-2xl font-bold text-stone-900 tracking-tight">
+  Khu A – Gặp gỡ và kết nối
+</h3>
                   </div>
                   <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center">
                     <Users className="w-6 h-6" />
@@ -170,7 +170,7 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
                     <span className="text-xs uppercase tracking-wider text-emerald-800 font-semibold block">
                       Phân khu B
                     </span>
-                    <h3 className="text-2xl font-bold font-serif text-stone-900">
+                    <h3 className="text-2xl font-bold  text-stone-900">
                       Khu B – Riêng tư và thư thái
                     </h3>
                   </div>
@@ -230,7 +230,10 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
             <div className="lg:col-span-5">
               <div className="border border-stone-200 bg-stone-100 p-2 rounded-xl">
                 <img
-                  src="/src/assets/images/bana_rong_culture_1793979506607.jpg"
+                  src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "/assets/images/bana_rong_culture_1793979506607.jpg";
+                  }}
                   alt="Kiến trúc nhà Rông cảm hứng thiết kế Kon River"
                   className="w-full h-[400px] object-cover rounded-lg"
                   loading="lazy"
@@ -248,9 +251,9 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
                 <span>NGÔN NGỮ THIẾT KẾ</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
-                Cảm hứng từ kiến trúc và chất liệu địa phương
-              </h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-stone-900 leading-snug tracking-tight">
+  Cảm hứng từ kiến trúc và chất liệu địa phương
+</h2>
 
               <div className="text-stone-600 text-base leading-relaxed space-y-4">
                 <p>
@@ -285,7 +288,7 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
           <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
             KẾT NỐI ĐỊA PHƯƠNG
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
+          <h2 className="text-2xl sm:text-3xl font-bold  text-stone-900">
             Từ Kon River, mở ra hành trình khám phá Vĩnh Thạnh
           </h2>
           <p className="text-stone-600 text-base leading-relaxed max-w-2xl mx-auto">
@@ -314,7 +317,7 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
               <ShieldAlert className="w-4 h-4 text-stone-600" />
               <span>Thông tin minh bạch dự án</span>
             </div>
-            <h3 className="text-xl font-bold font-serif text-stone-900">
+            <h3 className="text-xl font-bold  text-stone-900">
               Kon River Eco Retreat đang trong quá trình phát triển.
             </h3>
             <p className="text-sm text-stone-600 leading-relaxed">

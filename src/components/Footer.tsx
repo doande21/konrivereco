@@ -32,16 +32,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenAdmin }) => {
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src="/assets/logo.png"
+                src="https://i.postimg.cc/nrX3PGf7/Gemini-Generated-Image-vvjumkvvjumkvvju.png"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = "https://i.postimg.cc/nrX3PGf7/Gemini-Generated-Image-vvjumkvvjumkvvju.png";
+                  (e.currentTarget as HTMLImageElement).src = "/assets/logo.png";
                 }}
                 alt="Logo Kon River Eco Retreat"
                 className="h-14 w-auto object-contain brightness-105"
                 loading="lazy"
               />
               <div>
-                <span className="text-lg font-bold font-serif tracking-tight text-stone-100 block">
+                <span className="text-lg font-bold  tracking-tight text-stone-100 block">
                   CHẠM VĨNH THẠNH
                 </span>
                 <span className="text-xs text-stone-400 block">

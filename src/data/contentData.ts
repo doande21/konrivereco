@@ -52,7 +52,7 @@ export const INITIAL_ARTICLES: Article[] = [
 Tại đây, dòng nước êm đềm mở ra không gian cho những buổi sớm ngắm sương bảng lảng trên mặt nước, những buổi chiều lắng nghe nhịp nước vỗ về bờ đá. Khách lưu trú có thể tản bộ ven bờ sông, chèo kayak thư giãn hoặc tìm cho mình một góc thiền định thanh tịnh giữa thiên nhiên nguyên sơ.
 
 Hành trình bảo tồn và phát triển sinh thái ven sông Kôn luôn đặt mục tiêu gìn giữ nguyên vẹn thảm thực vật bản địa, giảm thiểu tối đa can thiệp nhân tạo vào dòng chảy tự nhiên.`,
-    image: '/src/assets/images/kon_river_landscape_1793979505469.jpg',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
     author: 'Ban Biên Tập Kon River',
     readTime: '4 phút đọc',
     publishedAt: '2026-10-15'
@@ -67,7 +67,7 @@ Hành trình bảo tồn và phát triển sinh thái ven sông Kôn luôn đặ
 Đến với hồ Định Bình, du khách sẽ cảm nhận ngay bầu không khí mát lành tách biệt hoàn toàn với phố thị xô bồ. Đây là điểm đến lý tưởng cho những chuyến dã ngoại ngắm cảnh, chụp ảnh thiên nhiên và trải nghiệm sự tĩnh lặng hiếm có giữa đất trời miền trung du.
 
 Từ khuôn viên Kon River Eco Retreat, cung đường kết nối đến hồ Định Bình mở ra chuyến hành trình tuyệt đẹp uốn quanh sườn đồi, nơi du khách có thể phóng tầm mắt ôm trọn cảnh sắc nên thơ của thung lũng.`,
-    image: '/src/assets/images/dinh_binh_lake_1793979505731.jpg',
+    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80',
     author: 'Cẩm Nang Vĩnh Thạnh',
     readTime: '5 phút đọc',
     publishedAt: '2026-10-18'
@@ -82,7 +82,7 @@ Từ khuôn viên Kon River Eco Retreat, cung đường kết nối đến hồ 
 Các vỉ bánh tráng sau đó được đem phơi dưới ánh nắng rực rỡ của miền đất võ. Quá trình làm bánh đòi hỏi sự khéo léo, dẻo dai và kinh nghiệm canh thời tiết chuẩn xác của người thợ lành nghề qua hàng chục năm gắn bó.
 
 Trong hành trình "Chạm Làng Nghề", du khách sẽ được tận mắt chứng kiến công đoạn tráng bánh, tự tay thử sức và lắng nghe những tâm sự chân chất của các nghệ nhân gìn giữ nghề xưa.`,
-    image: '/src/assets/images/traditional_rice_paper_1793979507277.jpg',
+    image: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=1200&q=80',
     author: 'Hành Trình Làng Nghề',
     readTime: '6 phút đọc',
     publishedAt: '2026-10-22'
@@ -97,7 +97,7 @@ Trong hành trình "Chạm Làng Nghề", du khách sẽ được tận mắt ch
 Nội dung giới thiệu về nghề nấu rượu tập trung vào việc khám phá quy trình kỹ thuật làm nghề, sự kiên nhẫn của các gia đình gắn bó nhiều thế hệ với chum vại, chứ không hướng tới việc tiêu thụ đồ uống có cồn.
 
 Đây là cơ hội để du khách hiểu thêm về cách người dân địa phương biến những sản vật từ hạt gạo, nguồn nước quê hương thành biểu tượng ẩm thực truyền thống.`,
-    image: '/src/assets/images/traditional_rice_paper_1793979507277.jpg',
+    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80',
     author: 'Ký Sự Văn Hóa',
     readTime: '4 phút đọc',
     publishedAt: '2026-10-25'
@@ -112,7 +112,7 @@ Nội dung giới thiệu về nghề nấu rượu tập trung vào việc khá
 Mỗi đường viền, hoa văn hình thoi, hình mắt chim hay cây rau rừng trên tấm vải thổ cẩm đều mang ý nghĩa biểu tượng sâu sắc về vũ trụ, đất rừng và tình đoàn kết buôn làng. Nghề dệt thổ cẩm không chỉ tạo ra trang phục truyền thống mà còn là sợi dây kết nối các thế hệ gìn giữ cội nguồn.
 
 Dự án Kon River Eco Retreat mong muốn đồng hành cùng các nghệ nhân Hà Ri giới thiệu sản phẩm dệt thổ cẩm nguyên bản đến du khách trong và ngoài nước, góp phần bảo tồn giá trị văn hóa quý báu.`,
-    image: '/src/assets/images/bana_rong_culture_1793979506607.jpg',
+    image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80',
     author: 'Bản Sắc Bản Địa',
     readTime: '5 phút đọc',
     publishedAt: '2026-11-01'
@@ -127,7 +127,7 @@ Dự án Kon River Eco Retreat mong muốn đồng hành cùng các nghệ nhân
 Đội ngũ kiến trúc sư của Kon River Eco Retreat đã chắt lọc những đường nét dốc mái thanh thoát, tỷ lệ không gian thoáng đạt và việc sử dụng gỗ, mây tre, đá cuội để đưa vào các bungalow nghỉ dưỡng và trung tâm sự kiện của dự án.
 
 Sự giao thoa giữa tiện nghi đương đại chuẩn sinh thái và hình bóng kiến trúc truyền thống hứa hẹn mang đến cho du khách một không gian lưu trú ấm cúng, sang trọng nhưng vẫn đậm đà bản sắc Vĩnh Thạnh.`,
-    image: '/src/assets/images/bana_rong_culture_1793979506607.jpg',
+    image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80',
     author: 'Hội Đồng Kiến Trúc',
     readTime: '5 phút đọc',
     publishedAt: '2026-11-04'
@@ -142,7 +142,7 @@ export const INITIAL_UPDATES: ProjectUpdate[] = [
     category: 'Quy hoạch dự án',
     summary: 'Quy hoạch chi tiết trên diện tích gần 2 ha ven sông Kôn gồm trung tâm hội nghị sự kiện 800 khách và 10 bungalow sinh thái riêng tư.',
     content: 'Tân Tiến Phát chính thức công bố định hướng quy hoạch không gian sinh thái cho Kon River Eco Retreat, nhấn mạnh việc bảo tồn cảnh quan tự nhiên sông Kôn và ứng dụng kiến trúc bản địa Ba Na.',
-    image: '/src/assets/images/kon_river_landscape_1793979505469.jpg',
+    image: 'https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg',
     isOfficial: true
   },
   {
@@ -152,7 +152,7 @@ export const INITIAL_UPDATES: ProjectUpdate[] = [
     category: 'Hoạt động địa phương',
     summary: 'Đoàn công tác dự án đã làm việc với đại diện cộng đồng làng Hà Ri để chuẩn bị các chương trình trải nghiệm văn hóa bền vững.',
     content: 'Chương trình làm việc tập trung vào việc tạo sinh kế cho người làm nghề dệt thổ cẩm, đồng thời xây dựng quy chuẩn đón tiếp tôn trọng văn hóa bản địa.',
-    image: '/src/assets/images/bana_rong_culture_1793979506607.jpg',
+    image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=1200&q=80',
     isOfficial: true
   }
 ];

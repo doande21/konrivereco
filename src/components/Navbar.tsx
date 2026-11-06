@@ -61,16 +61,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="Kon River Eco Retreat"
           >
             <img
-              src="/assets/logo.png"
+              src="https://i.postimg.cc/nrX3PGf7/Gemini-Generated-Image-vvjumkvvjumkvvju.png"
               onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = "https://i.postimg.cc/nrX3PGf7/Gemini-Generated-Image-vvjumkvvjumkvvju.png";
+                (e.currentTarget as HTMLImageElement).src = "/assets/logo.png";
               }}
               alt="Logo Kon River Eco Retreat"
               className="h-12 w-auto object-contain shrink-0"
               loading="eager"
             />
             <div className="shrink-0">
-              <span className="text-base sm:text-lg font-bold tracking-tight text-stone-900 group-hover:text-emerald-950 transition-colors uppercase font-serif block leading-tight">
+              <span className="text-base sm:text-lg font-bold tracking-tight text-stone-900 group-hover:text-emerald-950 transition-colors uppercase  block leading-tight">
                 CHẠM VĨNH THẠNH
               </span>
               <span className="text-[10px] tracking-widest text-stone-500 block uppercase font-medium">

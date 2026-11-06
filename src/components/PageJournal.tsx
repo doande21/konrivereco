@@ -59,7 +59,7 @@ export const PageJournal: React.FC<PageJournalProps> = ({
           <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold block">
             TRAVEL JOURNAL
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold  text-white tracking-tight leading-tight">
             Những câu chuyện từ Vĩnh Thạnh
           </h1>
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
@@ -117,7 +117,7 @@ export const PageJournal: React.FC<PageJournalProps> = ({
                       </span>
                     </div>
 
-                    <h2 className="text-lg font-bold font-serif text-stone-900 leading-snug">
+                    <h2 className="text-lg font-bold  text-stone-900 leading-snug">
                       {article.title}
                     </h2>
 
@@ -174,7 +174,7 @@ export const PageJournal: React.FC<PageJournalProps> = ({
             {/* Modal Content */}
             <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
               
-              <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900 leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-bold  text-stone-900 leading-snug">
                 {modalArticle.title}
               </h2>
 

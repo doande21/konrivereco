@@ -63,7 +63,7 @@ export const PageContact: React.FC = () => {
           <span className="text-xs uppercase tracking-widest text-emerald-400 font-semibold block">
             STAY CONNECTED
           </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif text-white tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold  text-white tracking-tight leading-tight">
             Cùng Kon River viết tiếp hành trình khám phá
           </h1>
           <p className="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
@@ -83,7 +83,7 @@ export const PageContact: React.FC = () => {
                 <span className="text-xs uppercase tracking-wider text-emerald-800 font-semibold block">
                   KẾT NỐI VỚI CHÚNG TÔI
                 </span>
-                <h2 className="text-2xl font-bold font-serif text-stone-900 mt-1">
+                <h2 className="text-2xl font-bold  text-stone-900 mt-1">
                   Gửi lời nhắn đến Kon River
                 </h2>
                 <p className="text-xs text-stone-500 mt-1">
@@ -94,7 +94,7 @@ export const PageContact: React.FC = () => {
               {success ? (
                 <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-xl space-y-3 text-center">
                   <CheckCircle2 className="w-10 h-10 text-emerald-700 mx-auto" />
-                  <h3 className="text-lg font-bold font-serif text-emerald-950">
+                  <h3 className="text-lg font-bold  text-emerald-950">
                     Gửi lời nhắn thành công!
                   </h3>
                   <p className="text-sm text-emerald-900 leading-relaxed max-w-md mx-auto">
@@ -215,7 +215,7 @@ export const PageContact: React.FC = () => {
                   <span>DÀNH CHO ĐỐI TÁC</span>
                 </div>
 
-                <h3 className="text-xl font-bold font-serif text-stone-900">
+                <h3 className="text-xl font-bold  text-stone-900">
                   Cùng kết nối những giá trị địa phương
                 </h3>
 
@@ -271,7 +271,7 @@ export const PageContact: React.FC = () => {
             <span className="text-xs uppercase tracking-widest text-emerald-800 font-semibold block">
               MINH BẠCH DOANH NGHIỆP
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-serif text-stone-900">
+            <h2 className="text-2xl sm:text-3xl font-bold  text-stone-900">
               Thông tin chính thức
             </h2>
             <p className="text-stone-600 text-sm">
@@ -282,7 +282,7 @@ export const PageContact: React.FC = () => {
           <div className="border border-stone-200 rounded-2xl p-8 bg-stone-50 space-y-6">
             
             <div className="border-b border-stone-200 pb-4">
-              <h3 className="text-xl font-bold font-serif text-stone-900">
+              <h3 className="text-xl font-bold  text-stone-900">
                 Kon River Eco Retreat
               </h3>
               <p className="text-xs text-stone-600 mt-1">
