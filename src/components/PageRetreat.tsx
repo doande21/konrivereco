@@ -44,14 +44,17 @@ export const PageRetreat: React.FC<PageRetreatProps> = ({ onNavigate, onOpenArti
             <div className="lg:col-span-5">
               <div className="border border-stone-800 bg-stone-950 p-2 rounded-xl">
                 <img
-                  src="/src/assets/images/kon_river_landscape_1793979505469.jpg"
-                  alt="Kon River Eco Retreat bên dòng sông Kôn"
+                  src="/assets/IMG-8809.jpg"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = "https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg";
+                  }}
+                  alt="Kon River Eco Retreat ven sông Kôn"
                   className="w-full h-[380px] object-cover rounded-lg"
                   loading="eager"
                   referrerPolicy="no-referrer"
                 />
                 <div className="p-3 text-xs text-stone-400 flex justify-between">
-                  <span>Vị trí ven sông Kôn — Vĩnh Thạnh</span>
+                  <span>Toàn cảnh bungalow sinh thái</span>
                   <span className="text-stone-500">Quy hoạch ~2 ha</span>
                 </div>
               </div>

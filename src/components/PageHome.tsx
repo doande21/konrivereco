@@ -55,71 +55,68 @@ export const PageHome: React.FC<PageHomeProps> = ({ onNavigate }) => {
     <div className="w-full">
       
       {/* SECTION 1: HERO BANNER – Lời mời chạm vào Vĩnh Thạnh */}
-      <section className="relative bg-stone-900 text-stone-100 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-emerald-400 font-semibold">
-                <span>Vĩnh Thạnh, Bình Định</span>
-                <span aria-hidden="true">/</span>
-                <span>Sinh Thái Ven Sông Kôn</span>
-              </div>
+      <section className="relative w-full bg-stone-900 text-stone-100 overflow-hidden">
+        {/* Full visual position with IMG-8809 */}
+        <div className="relative w-full min-h-[500px] lg:min-h-[620px] flex items-center justify-center">
+          <img
+            src="/assets/IMG-8809.jpg"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = "https://i.postimg.cc/hGyTw6hd/IMG-8809.jpg";
+            }}
+            alt="Toàn cảnh Kon River Eco Retreat ven sông Kôn"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            loading="eager"
+            referrerPolicy="no-referrer"
+          />
+          {/* Subtle measured scrim for contrast and legibility */}
+          <div className="absolute inset-0 bg-stone-950/45 backdrop-brightness-95" />
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-serif leading-tight text-white tracking-tight text-balance">
-                CHẠM VĨNH THẠNH — KON RIVER ECO RETREAT
-              </h1>
-
-              <p className="text-xl sm:text-2xl font-serif text-emerald-200">
-                Nghỉ một nơi, cảm nhận cả một vùng đất.
-              </p>
-
-              <div className="text-stone-300 text-base sm:text-lg leading-relaxed space-y-4 max-w-2xl font-normal">
-                <p>
-                  Có những chuyến đi không chỉ để tìm một nơi nghỉ ngơi, mà còn để lắng nghe câu chuyện của vùng đất mình đặt chân đến.
-                </p>
-                <p>
-                  Bên dòng sông Kôn, Vĩnh Thạnh mở ra một hành trình của thiên nhiên, làng nghề và những giá trị văn hóa bản địa. Từ cảm hứng ấy, Kon River Eco Retreat được phát triển với mong muốn trở thành điểm kết nối giữa không gian nghỉ dưỡng sinh thái và những trải nghiệm mang dấu ấn địa phương.
-                </p>
-                <p className="font-medium text-stone-100">
-                  Một nơi để nghỉ. Một vùng đất để khám phá.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-4 pt-4">
-                <button
-                  onClick={() => onNavigate('discover')}
-                  className="px-6 py-3.5 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg font-medium text-sm transition-colors cursor-pointer flex items-center gap-2"
-                >
-                  <span>Khám phá Vĩnh Thạnh</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => onNavigate('retreat')}
-                  className="px-6 py-3.5 bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 rounded-lg font-medium text-sm transition-colors cursor-pointer"
-                >
-                  Tìm hiểu Kon River
-                </button>
-              </div>
+          {/* Centered compact title & tagline */}
+          <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-4 py-16">
+            <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs uppercase tracking-[0.25em] text-emerald-300 font-semibold px-3 py-1 bg-black/40 backdrop-blur-sm rounded border border-white/15">
+              <span>Vĩnh Thạnh, Bình Định</span>
+              <span aria-hidden="true">·</span>
+              <span>Sinh Thái Ven Sông Kôn</span>
             </div>
 
-            {/* Original Image without drop shadow */}
-            <div className="lg:col-span-5">
-              <div className="border border-stone-800 bg-stone-950 p-2 rounded-xl">
-                <img
-                  src="/src/assets/images/kon_river_landscape_1793979505469.jpg"
-                  alt="Dòng sông Kôn và cảnh sắc thiên nhiên Vĩnh Thạnh"
-                  className="w-full h-[400px] lg:h-[480px] object-cover rounded-lg"
-                  loading="eager"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="p-3 text-xs text-stone-400 flex items-center justify-between">
-                  <span>Dòng chảy sông Kôn — Vĩnh Thạnh</span>
-                  <span className="text-stone-500">Ảnh thực cảnh</span>
-                </div>
-              </div>
-            </div>
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-serif text-white tracking-wider uppercase leading-snug text-balance">
+              CHẠM VĨNH THẠNH — KON RIVER ECO RETREAT
+            </h1>
 
+            <p className="text-base sm:text-lg md:text-xl font-serif text-emerald-100 font-medium">
+              Nghỉ một nơi, cảm nhận cả một vùng đất.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+              <button
+                onClick={() => onNavigate('discover')}
+                className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg font-medium text-xs sm:text-sm transition-colors cursor-pointer inline-flex items-center gap-2"
+              >
+                <span>Khám phá Vĩnh Thạnh</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => onNavigate('retreat')}
+                className="px-5 py-2.5 bg-stone-900/80 hover:bg-stone-900 text-stone-200 border border-white/20 rounded-lg font-medium text-xs sm:text-sm transition-colors cursor-pointer backdrop-blur-sm"
+              >
+                Tìm hiểu Kon River
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Narrative Intro directly below full hero */}
+        <div className="bg-stone-900 border-t border-stone-800 py-12 lg:py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <p className="text-stone-300 text-sm sm:text-base leading-relaxed font-normal">
+              Có những chuyến đi không chỉ để tìm một nơi nghỉ ngơi, mà còn để lắng nghe câu chuyện của vùng đất mình đặt chân đến.
+            </p>
+            <p className="text-stone-300 text-sm sm:text-base leading-relaxed font-normal">
+              Bên dòng sông Kôn, Vĩnh Thạnh mở ra một hành trình của thiên nhiên, làng nghề và những giá trị văn hóa bản địa. Từ cảm hứng ấy, Kon River Eco Retreat được phát triển với mong muốn trở thành điểm kết nối giữa không gian nghỉ dưỡng sinh thái và những trải nghiệm mang dấu ấn địa phương.
+            </p>
+            <p className="font-semibold text-emerald-300 text-sm sm:text-base pt-2">
+              Một nơi để nghỉ. Một vùng đất để khám phá.
+            </p>
           </div>
         </div>
       </section>
