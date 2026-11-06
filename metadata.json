@@ -1,0 +1,6 @@
+{
+  "name": "Chạm Vĩnh Thạnh — Kon River Eco Retreat",
+  "description": "Cổng thông tin du lịch Vĩnh Thạnh và dự án khu nghỉ dưỡng sinh thái Kon River Eco Retreat tại Bình Định.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
